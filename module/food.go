@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+
 	// "image"
 	// "image/jpeg"
 	// "image/png"
@@ -12,7 +13,7 @@ import (
 	// "path/filepath"
 	"time"
 
-	"github.com/Nidasakinaa/be_KaloriKu/model"
+	"github.com/Nidasakinaa/KSI_be/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -45,93 +46,6 @@ func StaticAdminLogin(db *mongo.Database, col string, username, password string)
 	// Implementasi statis sementara hanya memeriksa kecocokan dengan parameter
 	return false, errors.New("invalid admin credentials")
 }
-
-// FUNCTION MENU ITEM
-// // Helper function to download image from URL
-// func downloadImage(url string) (image.Image, string, error) {
-// 	resp, err := http.Get(url)
-// 	if err != nil {
-// 		return nil, "", err
-// 	}
-// 	defer resp.Body.Close()
-
-// 	img, format, err := image.Decode(resp.Body)
-// 	if err != nil {
-// 		return nil, "", err
-// 	}
-
-// 	if format != "jpeg" && format != "png" {
-// 		return nil, "", errors.New("unsupported image format")
-// 	}
-
-// 	return img, format, nil
-// }
-
-// // Helper function to save image locally
-// func saveImage(img image.Image, path string, format string) error {
-// 	// Create the directory if it doesn't exist
-// 	err := os.MkdirAll(filepath.Dir(path), os.ModePerm)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	file, err := os.Create(path)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	defer file.Close()
-
-// 	switch format {
-// 	case "jpeg":
-// 		err = jpeg.Encode(file, img, nil)
-// 	case "png":
-// 		err = png.Encode(file, img)
-// 	default:
-// 		return errors.New("unsupported image format")
-// 	}
-
-// 	if err != nil {
-// 		return err
-// 	}
-// 	return nil
-// }
-
-// // Helper function to display image in terminal
-// func displayImage(img image.Image) {
-// 	fmt.Println("Displaying image is not supported in this terminal.")
-// }
-
-// // Helper function to load image from local path
-// func loadImage(path string) (image.Image, error) {
-// 	file, err := os.Open(path)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	defer file.Close()
-
-// 	img, _, err := image.Decode(file)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	return img, nil
-// }
-
-// // GetMenuItemByIDAndDisplayImage retrieves a menu item by its ID and displays the image
-// func GetMenuItemByIDAndDisplayImage(_id primitive.ObjectID, db *mongo.Database, col string) (model.MenuItem, error) {
-// 	menu, err := GetMenuItemByID(_id, db, col)
-// 	if err != nil {
-// 		return menu, err
-// 	}
-
-// 	// Load and display the image
-// 	img, err := loadImage(menu.Image)
-// 	if err != nil {
-// 		return menu, fmt.Errorf("error loading image: %v", err)
-// 	}
-// 	displayImage(img)
-
-// 	return menu, nil
-// }
 
 // GetMenuItemByID retrieves a menu item from the database by its ID
 func GetMenuItemByID(_id primitive.ObjectID, db *mongo.Database, col string) (model.MenuItem, error) {

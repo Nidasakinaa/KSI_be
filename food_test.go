@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	module "github.com/Nidasakinaa/be_KaloriKu/module"
+	module "github.com/Nidasakinaa/KSI_be/module"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
